@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nypörn2;
+
+/**
+ *
+ * @author topcu
+ */
+
+public class nypörn2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        employe emp1=new employe("ZEYNEP TOPÇU",1500,50,2010);
+        emp1.toString(emp1);
+    }
+}
+class employe {
+    public String name;
+    public double salary;
+    public int workhours,hireyear;
+    employe(String name,double salary,int workhours,int hireyear){
+        this.name=name;
+        this.salary=salary;
+        this.workhours=workhours;
+        this.hireyear=hireyear;
+    }
+    public double tax(){
+        if(this.salary>1000){
+            return this.salary*0.3;
+        }
+        return 0.0;
+        
+    }
+    public double bonus(){
+        if(this.workhours>=40){
+            return( this.workhours-40)*30;
+        }
+        return 0.0;
+    }
+    public double raisesalary(){
+        int year=2021-this.hireyear;
+        if(year<10){
+            double a=( this.salary+this.bonus()-this.tax())*0.05;
+            return a;
+        }
+        else if(year>9&& year<20){
+            double b=( this.salary+this.bonus()-this.tax())*0.01;
+            return b;
+        }
+        else if(year>19){
+        double c=( this.salary+this.bonus()-this.tax())*0.15;
+        return c;
+        }
+        return 0.0;
+    }
+    public void toString(employe emp){
+        System.out.println("ADI VE SOYADI:"+emp.name);
+        System.out.println("MAAŞI:"+emp.salary);
+        System.out.println("ÇALIŞMA SAATİ:"+emp.workhours);
+        System.out.println("İŞE BAŞLANGIÇ YILI:"+emp.hireyear);
+        System.out.println("VERGİ:"+emp.tax());
+        System.out.println("MAAŞ ARTIŞI:"+this.raisesalary());
+        System.out.println("BONUS:"+emp.bonus());
+        double toplammaaş=(int) (emp.salary+emp.bonus());
+        System.out.println("TOPLAM MAAŞ:"+toplammaaş);
+        double maaş=(int) (emp.salary+emp.bonus()-emp.tax());
+        System.out.println("VERGİ VE BONUSLARLA BİRLİKTE MAAŞ:"+maaş);
+        
+}
+    
+    
+    
+    
+ 
+}
+
